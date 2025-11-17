@@ -50,6 +50,6 @@ Aliases:
 - `bcnp` - no paralogs, filtered with bootstrap, 1-1 with taxa set (206)
 - `p` - with paralogs, size 3 to 23 (4187)
 
-## DevLog
+## [DevLog](https://github.com/young-sudo/phyloGen-devlog)
 
 More details can be found in the `gp_projekt_devlog.ipynb` notebook file with task descriptions, links to tools and development milestones.
