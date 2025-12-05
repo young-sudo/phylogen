@@ -2,9 +2,11 @@
 
 *by Younginn Park*
 
+
+
 ## Summary
 
-The Phylogenetic Pipeline is a set of tools designed to construct phylogenetic trees using different methods, like consensus or supertree, that aim to automate the process of reconstructing species trees given a list of species of interest and relevant genomic sequences (more details in the main presentation file `phylo_prezi.pdf`).
+The Phylogenetic Pipeline is a set of tools designed to construct phylogenetic trees using different methods, like consensus or supertree, that aim to automate the process of reconstructing species trees given a list of species of interest and relevant genomic sequences.
 
 The benchmark set of species used in this task comes from the [article](https://pubmed.ncbi.nlm.nih.gov/26400318/) by F. Póntigo, M. Moraga and S.V. Flores, *Molecular phylogeny and a taxonomic proposal for the genus Streptococcus*.
 
@@ -22,6 +24,10 @@ The benchmark set of species used in this task comes from the [article](https://
 </div>
 
 ## Usage
+
+(Nextflow implementatioin coming soon...)
+
+## Methodology
 
 ### Data preparation
 
@@ -46,11 +52,9 @@ To run clustering on sequences in `sequences.fasta`
 
 >`run_fasturec.sh` - for supertree
 
-## Analysis Documents
+## Results
 
-Tree analysis outline can be found in: `analysis.pdf` and `phylo_prezi.pdf`
-
-## Trees Name Guide
+### Trees Name Guide
 
 `ml_tree.txt` - species trees made with ML
 
@@ -62,3 +66,9 @@ Aliases:
 - `bnp` - no paralogs, filtered with bootstrap, only with high split support (1743)
 - `bcnp` - no paralogs, filtered with bootstrap, 1-1 with taxa set (206)
 - `p` - with paralogs, size 3 to 23 (4187)
+
+## Analysis Documents
+
+Tree analysis outline can be found in: `analysis.pdf` and `phylo_prezi.pdf`
+
+>More details about the results can be found in the main presentation file `phylo_prezi.pdf`
