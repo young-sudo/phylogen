@@ -10,12 +10,12 @@ The benchmark set of species used in this task comes from the [article](https://
 
 <div align="center">
   <figure>
-    <img src="https://raw.githubusercontent.com/young-sudo/neuro-sim/main/img/consensus.png" alt="c" width="400"/>
-    <img src="https://raw.githubusercontent.com/young-sudo/neuro-sim/main/img/consensus_bootstrap.png" alt="cb" width="400"/>
+    <img src="https://raw.githubusercontent.com/young-sudo/phylogen/main/img/consensus.png" alt="c" width="400"/>
+    <img src="https://raw.githubusercontent.com/young-sudo/phylogen/main/img/consensus_bootstrap.png" alt="cb" width="400"/>
     <br>
-    <img src="https://raw.githubusercontent.com/young-sudo/neuro-sim/main/img/supertree.png" alt="s" width="400"/>
-    <img src="https://raw.githubusercontent.com/young-sudo/neuro-sim/main/img/supertree_bootstrap.png" alt="sb" width="400"/>
-    <img src="https://raw.githubusercontent.com/young-sudo/neuro-sim/main/img/supertree_paralogs.png" alt="sp" width="400"/>
+    <img src="https://raw.githubusercontent.com/young-sudo/phylogen/main/img/supertree.png" alt="s" width="400"/>
+    <img src="https://raw.githubusercontent.com/young-sudo/phylogen/main/img/supertree_bootstrap.png" alt="sb" width="400"/>
+    <img src="https://raw.githubusercontent.com/young-sudo/phylogen/main/img/supertree_paralogs.png" alt="sp" width="400"/>
     <br>
     <figcaption style="text-align:center;"><em>Figure 1. Outputs from each of the methods and comparisons with the species tree from the publication.</em></figcaption>
   </figure>
@@ -62,7 +62,3 @@ Aliases:
 - `bnp` - no paralogs, filtered with bootstrap, only with high split support (1743)
 - `bcnp` - no paralogs, filtered with bootstrap, 1-1 with taxa set (206)
 - `p` - with paralogs, size 3 to 23 (4187)
-
-## [DevLog](https://github.com/young-sudo/phyloGen-devlog) (private)
-
-More details can be found in the `gp_projekt_devlog.ipynb` notebook file with task descriptions, links to tools and development milestones.
