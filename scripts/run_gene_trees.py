@@ -10,7 +10,7 @@ from Bio.Align.Applications import MafftCommandline
 def main():
     cluster_names = fetch_cluster_names()
 
-    mafft_exe = os.path.join("mafft-7.520-win64-signed", "mafft-win", "mafft.bat")
+    mafft_exe = os.path.join("mafft")
     aln_folder = "alns"
     os.makedirs(aln_folder, exist_ok=True)
 
