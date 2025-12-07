@@ -2,11 +2,15 @@
 
 *by Younginn Park*
 
-
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Biopython](https://img.shields.io/badge/Biopython-50C878?style=for-the-badge&logo=python&logoColor=white)
+![DendroPy](https://img.shields.io/badge/DendroPy-FBEC5D?style=for-the-badge&logo=python&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-3c4549?style=for-the-badge&logo=gnubash&logoColor=white)
+![Nextflow](https://img.shields.io/badge/Nextflow-23CC85?style=for-the-badge&logo=nextflow&logoColor=white)
 
 ## Summary
 
-The Phylogenetic Pipeline is a set of tools designed to construct phylogenetic trees using different methods, like consensus or supertree, that aim to automate the process of reconstructing species trees given a list of species of interest and relevant genomic sequences.
+The Phylogenetic Pipeline is a set of tools designed to construct phylogenetic trees using different methods, consensus or supertree, that aim to automate the process of reconstructing species trees given a list of species of interest and relevant genomic sequences.
 
 The benchmark set of species used in this task comes from the [article](https://pubmed.ncbi.nlm.nih.gov/26400318/) by F. Póntigo, M. Moraga and S.V. Flores, *Molecular phylogeny and a taxonomic proposal for the genus Streptococcus*.
 
@@ -72,3 +76,17 @@ Aliases:
 Tree analysis outline can be found in: `analysis.pdf` and `phylo_prezi.pdf`
 
 >More details about the results can be found in the main presentation file `phylo_prezi.pdf`
+
+## References
+
+Peter J. A. Cock et al, Biopython: freely available Python tools for computational molecular biology and bioinformatics, Bioinformatics, Volume 25, Issue 11, June 2009, Pages 1422–1423, [https://doi.org/10.1093/bioinformatics/btp163](https://doi.org/10.1093/bioinformatics/btp163)
+
+Jeet Sukumaran, Mark T. Holder, DendroPy: a Python library for phylogenetic computing, Bioinformatics, Volume 26, Issue 12, June 2010, Pages 1569–1571, [https://doi.org/10.1093/bioinformatics/btq228](https://doi.org/10.1093/bioinformatics/btq228)
+
+NCBI Datasets CLI Tools, [https://github.com/ncbi/datasets](https://github.com/ncbi/datasets), [https://www.ncbi.nlm.nih.gov/datasets](https://www.ncbi.nlm.nih.gov/datasets), accessed Jan 2024, 
+
+Katoh K, Standley DM. MAFFT multiple sequence alignment software version 7: improvements in performance and usability. Mol Biol Evol. 2013 Apr;30(4):772-80. doi: 10.1093/molbev/mst010. Epub 2013 Jan 16. PMID: 23329690; PMCID: PMC3603318
+
+Steinegger, M., Söding, J. MMseqs2 enables sensitive protein sequence searching for the analysis of massive data sets. Nat Biotechnol 35, 1026–1028 (2017). [https://doi.org/10.1038/nbt.3988](https://doi.org/10.1038/nbt.3988)
+
+Górecki, P. et al (2012). GTP Supertrees from Unrooted Gene Trees: Linear Time Algorithms for NNI Based Local Searches. In: Bleris, L., Măndoiu, I., Schwartz, R., Wang, J. (eds) Bioinformatics Research and Applications. ISBRA 2012. Lecture Notes in Computer Science(), vol 7292. Springer, Berlin, Heidelberg. [https://doi.org/10.1007/978-3-642-30191-9_11](https://doi.org/10.1007/978-3-642-30191-9_11), Fasturec, [https://bioputer.mimuw.edu.pl/gorecki/fasturec/](https://bioputer.mimuw.edu.pl/gorecki/fasturec/) or [https://bitbucket.org/pgor17/fasturec/src/master/](https://bitbucket.org/pgor17/fasturec/src/master/), accessed Jan 2024

@@ -1,0 +1,206 @@
+#!/usr/bin/env Rscript
+
+q("no")
+
+---
+title: "Comparative Genomics"
+subtitle: "Phylogenetic Pipeline"
+author: "Younginn Park"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r echo=FALSE, include=FALSE}
+# if (!requireNamespace("TreeDist", quietly = TRUE)) {
+#   install.packages("TreeDist")
+# }
+
+library(TreeDist)
+library(ape)
+setwd("")
+
+```
+
+```{r echo=FALSE}
+# ML tree
+ml_tree <- ape::read.tree("ml_tree.txt")
+outgroup <- "LLAC"
+ml_tree <- ape::root(ml_tree, outgroup)
+
+# Base
+ctree_np <- ape::read.tree("ctree_np.txt")
+# ctree_np <- ape::read.tree("trees_cnp.txt.contree") # consensus tree from iqtree for verification
+ctree_np <- ape::root(ctree_np, outgroup)
+
+stree_np <- ape::read.tree("stree_np.txt")
+stree_np <- ape::root(stree_np, outgroup)
+
+# Bootstrap
+bctree_np <- ape::read.tree("bctree_np.txt")
+bctree_np <- ape::root(bctree_np, outgroup)
+
+bstree_np <- ape::read.tree("bstree_np.txt")
+bstree_np <- ape::root(bstree_np, outgroup)
+
+# Supertree with Paralogs
+stree_p <- ape::read.tree("stree_p.txt")
+stree_p <- ape::root(stree_p, outgroup)
+
+# instruction for TwoTreePlot()
+# https://rdrr.io/cran/TreeDist/f/vignettes/Robinson-Foulds.Rmd
+
+# instruction for VisualizeMatching
+# https://ms609.github.io/TreeDist/articles/Robinson-Foulds.html
+
+# MatchingSplitDistance
+# https://rdrr.io/cran/TreeDist/man/MatchingSplitDistance.html
+
+# Extending Robinson-Foulds metrics
+# Problem with multifurcations and small changes
+# https://cran.r-project.org/web/packages/TreeDist/vignettes/Robinson-Foulds.html
+
+```
+
+# Species tree
+
+Mutans group
+
+- SRAT: *Streptococcus ratti*
+- SDOW: *Streptococcus downei*
+- SDEV: *Streptococcus devriesei*
+
+Pyogenic group
+
+- SDYS: *Streptococcus dysgalactiae*
+- SPYO: *Streptococcus pyogenes*
+- SCAN: *Streptococcus canis*
+
+Bovis group
+
+- SEQU: *Streptococcus equinus*
+- SLUT: *Streptococcus lutetiensis*
+- SINF: *Streptococcus infantarius*
+
+Suis group
+
+- SENT: *Streptococcus entericus*
+- SPLU: *Streptococcus plurextorum*
+- SSUI: *Streptococcus suis*
+
+Mitis group A
+
+- SCON: *Streptococcus constellatus*
+- SINT: *Streptococcus intermedius*
+- SANG: *Streptococcus anginosus*
+
+Mitis group B
+
+- SPNE: *Streptococcus pneumoniae*
+- SPSE: *Streptococcus pseudopneumoniae*
+- SMIT: *Streptococcus mitis*
+
+Salivarius group
+
+- SVES: *Streptococcus vestibularis*
+- SSAL: *Streptococcus salivarius*
+- STHE: *Streptococcus thermophilus*
+
+Outgroup
+
+- LLAC: *Lactococcus lactis*
+- LCRE: *Lactococcus cremoris*
+
+```{r echo=FALSE}
+# ape::plot.phylo(ctree_np)
+
+pdf("tree_output.pdf", width = 5, height = 7)
+
+ape::plot.phylo(stree_p)
+
+dev.off()
+```
+Fig. Oryginalne drzewo gatunków (*ground truth*) tego zadania
+
+# Superdrzewo wywnioskowane (ang. *inferred*) z drzew genowych.
+
+Na początek wylosowano 500 rodzin z zestawu 4617 rodzin genów. Następnie dla każdej z tych wybranych rodzin białek skonstruowano drzewo metodą *Neighbor Joining* (najmniej obliczeniowo wymagająca metoda). Skonstruowane drzewa zapisano do jednego pliku tekstowego, a następnie na ich podstawie skonstruowano superdrzewo narzędziem Fasturec (https://bitbucket.org/pgor17/fasturec/src/master/).
+
+Zastosowano "standardową" heurystykę przeszukiwania przestrzeni drzew (opcja `-Z`), która rozpoczyna się od początkowego drzewa quasi-konsensusowego (domyślnie) i wykonuje kroki *hill-climbing* po koszcie duplikacji i utraty genu. Drzewo quasi-konsensusowe to proste drzewo zrekonstruowane z częstotliwości klastrów wejściowych drzew genów. Stosowana jest kombinacja operacji edycji drzewa NNI, SPR i TSW (zamiana liści).
+
+```{r echo=FALSE}
+ape::plot.phylo(ctree_np)
+```
+Fig. Superdrzewo na podstawie 500 rodzin białek.
+
+```{r}
+RobinsonFoulds(ml_tree, bctree_np)
+```
+
+
+
+```{r echo=FALSE}
+ape::plot.phylo(stree_np)
+```
+
+
+
+```{r echo=FALSE}
+ape::plot.phylo(bctree_np)
+```
+
+```{r}
+RobinsonFoulds(bctree_np, ctree_np)
+```
+
+
+```{r echo=FALSE}
+ape::plot.phylo(bstree_np)
+```
+When a majority consensus tree has multifurcations, it suggests that there is disagreement or ambiguity in the data or methods used to construct the individual trees. It could be due to factors such as insufficient data, conflicting signals, or limitations in the analysis methods. 
+
+
+```{r echo=FALSE}
+ape::plot.phylo(stree_p)
+```
+
+
+```{r include=FALSE}
+# ML
+pdf("trees_comparison.pdf", width = 20, height = 7)
+
+standardMargin <- c(0.4, 0.4, 0.8, 0.4)
+cbPalette8 <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442",
+                "#0072B2", "#D55E00", "#CC79A7")
+TwoTreePlot <- function() par(mfrow = c(1, 2), mar = standardMargin, cex = 0.9)
+TwoTreePlot()
+VisualizeMatching(MatchingSplitDistance, ml_tree, ctree_np)
+
+dev.off()
+
+RobinsonFoulds(ml_tree, bctree_np)
+
+```
+
+# Porównanie drzew
+
+```{r echo=FALSE}
+TwoTreePlot()
+VisualizeMatching(MatchingSplitDistance, ml_tree, stree_p)
+# VisualizeMatching(InfoRobinsonFoulds, ml_tree, bctree_np)
+# VisualizeMatching(RobinsonFouldsMatching, ml_tree, bctree_np)
+# VisualizeMatching(SharedPhylogeneticInfo, ml_tree, stree_np)
+```
+Fig. Drzewo gatunków (po lewej), superdrzewo z fasturec (po prawej). Pokolorowano krawędzie, których przecięcia (*split*) są unikatowe dla danego drzewa (lepszy obrazek w pliku `tree_comparison.pdf`).
+
+```{r}
+InfoRobinsonFoulds(ml_tree, bctree_np)
+```
+
+
+Wartość Robinsona-Fouldsa: 0
+```{r}
+RobinsonFoulds(ml_tree, stree_p)
+```
+
+Drzewa są identyczne.
