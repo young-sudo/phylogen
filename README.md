@@ -35,8 +35,11 @@ The benchmark set of species used in this task comes from the [article](https://
 
 ### Data preparation
 
-To fetch proteomes for organism names in `species_list.txt` (one taxon per line) from NCBI Datasets:
->`./run_fetch_proteomes.sh species_list.txt`
+To fetch proteomes for organism names in `species.txt` (one taxon per line) from NCBI Datasets:
+
+```bash
+./run_fetch_proteomes.sh species.txt
+```
 
 `PhyloPipeline.py` - package with helper functions for other scripts
 
@@ -44,25 +47,39 @@ To fetch proteomes for organism names in `species_list.txt` (one taxon per line)
 
 To run clustering on sequences in `sequences.fasta`
 
->`./run_clust_mmseqs.sh sequences.fasta`
+```bash
+./run_clust_mmseqs.sh sequences.fasta
+```
 
 ### MSA and NJ
 
->`run_gene_trees.py` - for gene trees
+For constructing gene trees using Multiple Sequence Alignment (MSA) and Neighbor Joining (NJ) method
+
+```bash
+run_gene_trees.py
+```
 
 ### Genome Trees
 
->`run_genome_tree.py` - for consensus tree
+For constructing a consensus tree with DendroPy
 
->`run_fasturec.sh` - for supertree
+```bash
+run_genome_tree.py
+```
+
+For constructing a supertree with Fasturec
+
+```bash
+run_fasturec.sh
+```
 
 ## Results
 
 ### Trees Name Guide
 
-`ml_tree.txt` - species trees made with ML
+`ml_tree.txt` - species trees made with ML (Maximum Likelihood) method
 
-`trees_[alias].txt` - gene trees (NJ) for specific tasks
+`trees_[alias].txt` - gene trees (NJ) for specific task
 
 Aliases:
 - `np` - no paralogs for supertree, trees size 3 to 23 (2111)
@@ -70,6 +87,13 @@ Aliases:
 - `bnp` - no paralogs, filtered with bootstrap, only with high split support (1743)
 - `bcnp` - no paralogs, filtered with bootstrap, 1-1 with taxa set (206)
 - `p` - with paralogs, size 3 to 23 (4187)
+
+File names for phylogenetic trees are:
+- `bctree_np` - bootstrap consensus tree constructed without paralogs
+- `bstree_np` - bootstrap supertree constructed without paralogs
+- `ctree_np` - consensus tree constructed without paralogs
+- `stree_np` - supertree constructed without paralogs
+- `stree_p` - supertree constructed with paralogs
 
 ## Analysis Documents
 
