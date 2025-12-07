@@ -1,7 +1,3 @@
-#!/usr/bin/env Rscript
-
-q("no")
-
 ---
 title: "Comparative Genomics"
 subtitle: "Phylogenetic Pipeline"
