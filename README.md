@@ -103,6 +103,8 @@ Tree analysis outline can be found in: `analysis.pdf` and `phylo_prezi.pdf`
 
 ## References
 
+Tools used throughout the pipeline:
+
 Peter J. A. Cock et al, Biopython: freely available Python tools for computational molecular biology and bioinformatics, Bioinformatics, Volume 25, Issue 11, June 2009, Pages 1422–1423, [https://doi.org/10.1093/bioinformatics/btp163](https://doi.org/10.1093/bioinformatics/btp163)
 
 Jeet Sukumaran, Mark T. Holder, DendroPy: a Python library for phylogenetic computing, Bioinformatics, Volume 26, Issue 12, June 2010, Pages 1569–1571, [https://doi.org/10.1093/bioinformatics/btq228](https://doi.org/10.1093/bioinformatics/btq228)
