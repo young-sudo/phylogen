@@ -99,7 +99,7 @@ File names for phylogenetic trees are:
 
 Tree analysis outline can be found in: `analysis.pdf` and `phylo_prezi.pdf`
 
->More details about the results can be found in the main presentation file `phylo_prezi.pdf`
+>More details about the results can be found in the main presentation file `phylo_prezi.pdf` (in [`docs/`](https://github.com/young-sudo/phylogen/tree/a0facd5cc48b0612d0ecad26247347cc50ecb49c/docs))
 
 ## References
 
