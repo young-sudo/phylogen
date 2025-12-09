@@ -23,15 +23,56 @@ The benchmark set of species used in this task comes from the [article](https://
     <img src="https://raw.githubusercontent.com/young-sudo/phylogen/main/img/supertree_bootstrap.png" alt="sb" width="400"/>
     <img src="https://raw.githubusercontent.com/young-sudo/phylogen/main/img/supertree_paralogs.png" alt="sp" width="400"/>
     <br>
-    <figcaption style="text-align:center;"><em>Figure 1. Outputs from each of the methods and comparisons with the species tree from the publication.</em></figcaption>
+    <figcaption style="text-align:center;"><em>Outputs from each of the methods and comparisons with the species tree from the publication.</em></figcaption>
   </figure>
 </div>
 
 ## Usage
 
-(Nextflow implementatioin coming soon...)
+### Clone repository
 
-## Methodology
+```bash
+git clone https://github.com/young-sudo/phylogen.git
+```
+
+### Install Nextflow
+
+```bash
+# Download Nextflow
+curl -s https://get.nextflow.io | bash
+
+# Make Nextflow executable
+chmod +x nextflow
+
+# Move Nextflow into an executable path
+mkdir -p $HOME/.local/bin/
+mv nextflow $HOME/.local/bin/
+
+# Confirm Nextflow is installed correctly
+nextflow info
+```
+
+### Basic run
+
+```bash
+nextflow run main.nf \
+  --mode consensus \
+  --input data/species.txt \
+  --output_dir results
+```
+
+Available profiles:
+- `standard` - locally without containers
+- `conda` - with default mode and Conda environment
+- `docker` - with Docker
+- `singularity` - with Singularity/Apptainer
+- `slurm` - with slurm on HPC
+
+Available modes:
+- `consensus` - generate phylogenetic tree using consensus method
+- `supertree` - generate phylogenetics tree using supertree method
+
+## Methods
 
 ### Data preparation
 
