@@ -6,7 +6,7 @@
 ![Biopython](https://img.shields.io/badge/Biopython-50C878?style=for-the-badge&logo=python&logoColor=white)
 ![DendroPy](https://img.shields.io/badge/DendroPy-FBEC5D?style=for-the-badge&logo=python&logoColor=white)
 ![Bash](https://img.shields.io/badge/Bash-3c4549?style=for-the-badge&logo=gnubash&logoColor=white)
-![Nextflow](https://img.shields.io/badge/Nextflow-23CC85?style=for-the-badge&logo=nextflow&logoColor=white)
+![Nextflow](https://img.shields.io/badge/Nextflow-DSL2-23CC85?style=for-the-badge&logo=nextflow&logoColor=white)
 
 ## Summary
 
