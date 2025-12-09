@@ -72,6 +72,12 @@ Available modes:
 - `consensus` - generate phylogenetic tree using consensus method
 - `supertree` - generate phylogenetics tree using supertree method
 
+### For usage help run
+
+```bash
+nextflow run main.nf --help
+```
+
 ## Methods
 
 ### Data preparation
