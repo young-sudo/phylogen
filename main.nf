@@ -2,9 +2,10 @@
 
 nextflow.enable.dsl=2
 
-include {  } from './modules/genes.nf'
-include {  } from './modules/consensus.nf'
-include {  } from './modules/supertree.nf'
+include { FETCH_PROTEOMES; CLUSTER_GENES;
+          MAKE_GENE_TREES; BOOTSTRAP_ANALYSIS } from './modules/genes.nf'
+include { MAKE_CONSENSUS_TREE } from './modules/consensus.nf'
+include { MAKE_SUPERTREE } from './modules/supertree.nf'
 
 params.mode = params.mode ?: null
 params.input = params.input ?: "data/species.txt"
@@ -19,6 +20,7 @@ if ( params.help ) {
     Parameters:
        -profile           standard|conda|docker|singularity|slurm
       --mode              consensus|supertree
+      --bootstrap         add option to run bootstrap analysis
       --input             txt file with species, one per line
       --output_dir        dir path
     """
@@ -34,9 +36,22 @@ if ( params.mode != 'consensus' && params.mode != 'supertree' ) {
     throw new IllegalArgumentException("Invalid mode: ${params.mode}. Allowed values: consensus, supertree")
 }
 
+workflow { 
+    species_ch = Channel.to("${params.input}")
+    proteomes_ch = FETCH_PROTEOMES(species_ch)
+    clusters_ch = CLUSTER_GENES(proteomes_ch)
 
-species_ch = Channel.to("${params.input}")
+    if ( params.bootstrap ) {
+        gene_trees_ch = BOOTSTRAP_ANALYSIS(clusters_ch)
+    } else {
+        gene_trees_ch = MAKE_GENE_TREES(clusters_ch)
+    }
 
-workflow {
-    gene_trees_ch = 
+    if ( params.mode == 'consensus' ) {
+        MAKE_CONSENSUS_TREE(gene_trees_ch)
+    } else if (params.mode == 'supertree') {
+        MAKE_SUPERTREE(gene_trees_ch)
+    } else {
+        error "Unknown mode: ${params.mode}"
+    }
 }
