@@ -12,7 +12,7 @@ fi
 
 echo "Running fasturec for file $TREES"
 
-fasturec/fasturec -G "$TREES" -Z -ea
+fasturec -G "$TREES" -Z -ea
 # -G file with trees
 # -Z standard heuristic
 # -ea output name fu.txt

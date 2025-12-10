@@ -10,8 +10,10 @@ FASTA=$1
 
 # # Activate environment for genomics
 # # genev
-mamba run -n genenv mmseqs easy-cluster "$FASTA" clstrs_mmseqs tmp --min-seq-id 0.3
+# mamba run -n genenv mmseqs easy-cluster "$FASTA" clstrs_mmseqs tmp --min-seq-id 0.3
 # min_seq_id 0.3 is a rule of thumb for homologs
+
+mmseqs easy-cluster "$FASTA" clstrs_mmseqs tmp --min-seq-id 0.3
 
 rm clstrs_mmseqs_all_seqs.fasta
 rm clstrs_mmseqs_rep_seq.fasta
