@@ -18,7 +18,7 @@ do
 
     # Confirmed compatibility with NCBI datasets 16.3.0
     # Fetch reference genome accession
-    ACC=$(./datasets summary genome taxon "$GEN" \
+    ACC=$(datasets summary genome taxon "$GEN" \
                 --reference \
                 --report ids_only \
                 --limit 1 \
@@ -27,7 +27,7 @@ do
                 )
 
     # Check which organism/strain is the genome from exactly
-    ORG=$(./datasets summary genome accession "$ACC" \
+    ORG=$(datasets summary genome accession "$ACC" \
                 --reference \
                 --limit 1 \
                 --as-json-lines \
@@ -35,7 +35,7 @@ do
                 )
 
     # Download genome with accession $ACC
-    ./datasets download genome accession $ACC \
+    datasets download genome accession $ACC \
                                 --include protein
 
     # Overwrite Readmes and unzip quietly
