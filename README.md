@@ -7,12 +7,13 @@
 ![DendroPy](https://img.shields.io/badge/DendroPy-FBEC5D?style=for-the-badge&logo=python&logoColor=white)
 ![Bash](https://img.shields.io/badge/Bash-3c4549?style=for-the-badge&logo=gnubash&logoColor=white)
 ![Nextflow](https://img.shields.io/badge/Nextflow-DSL2-23CC85?style=for-the-badge&logo=nextflow&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 ## Summary
 
 The Phylogenetic Pipeline is a set of tools designed to construct phylogenetic trees using different methods, consensus or supertree, that aim to automate the process of reconstructing species trees given a list of species of interest and relevant genomic sequences.
 
-The benchmark set of species used in this task comes from the [article](https://pubmed.ncbi.nlm.nih.gov/26400318/) by F. Póntigo, M. Moraga and S.V. Flores, *Molecular phylogeny and a taxonomic proposal for the genus Streptococcus*.
+The benchmark set of species used in this task comes from the [article](https://pubmed.ncbi.nlm.nih.gov/26400318/) by F. Póntigo, M. Moraga and S.V. Flores (Universidad de Chile), *Molecular phylogeny and a taxonomic proposal for the genus Streptococcus*.
 
 <div align="center">
   <figure>
@@ -52,11 +53,23 @@ mv nextflow $HOME/.local/bin/
 nextflow info
 ```
 
+### Dependencies
+
+If you're <b>not</b> running through containers (Docker/Singularity) you should install [Fasturec](https://bitbucket.org/pgor17/fasturec/src/master/) manually:
+
+```bash
+git clone https://bitbucket.org/pgor17/fasturec.git
+cd fasturec
+make
+export PATH="/opt/fasturec/bin:${PATH}"
+```
+
 ### Basic run
 
 ```bash
 nextflow run main.nf \
   --mode consensus \
+  --bootstrap \
   --input data/species.txt \
   --output_dir results
 ```
@@ -71,6 +84,9 @@ Available profiles:
 Available modes:
 - `consensus` - generate phylogenetic tree using consensus method
 - `supertree` - generate phylogenetics tree using supertree method
+
+Bootstrap analysis:
+- Choosing option `--bootstrap` will enable bootstrap analysis for gene trees, adding an additional resampling-based evaluation step before downstream consensus or supertree reconstruction.
 
 ### For usage help run
 
