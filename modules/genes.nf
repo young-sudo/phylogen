@@ -5,7 +5,7 @@ process FETCH_PROTEOMES {
         val species_ch
     
     output:
-        val "sequences.fasta", emit proteomes_ch
+        val "sequences.fasta", emit: proteomes_ch
     
     script:
         """
@@ -20,7 +20,7 @@ process CLUSTER_GENES {
         path proteomes_ch
     
     output:
-        path "sequences/*", emit clusters_ch
+        path "sequences/*", emit: clusters_ch
 
     script:
         """
@@ -35,7 +35,7 @@ process MAKE_GENE_TREES {
         path clusters_ch
     
     output:
-        val "trees_np.txt", emit gene_trees_ch
+        val "trees_np.txt", emit: gene_trees_ch
 
     script:
         """
@@ -48,7 +48,7 @@ process BOOTSTRAP_ANALYSIS {
         path clusters_ch
 
     output:
-        path "trees_bnp.txt", emit bootstrap_trees_ch
+        path "trees_bnp.txt", emit: bootstrap_trees_ch
 
     script:
         """
