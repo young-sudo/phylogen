@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 
 import pandas as pd
 
@@ -87,3 +88,17 @@ def fetch_cluster_names():
     cluster_names = list(df_sel["Cluster"].unique())
 
     return cluster_names
+
+
+def extract_species(raw_species):
+    parts = raw_species.split()
+    if len(parts) >= 2:
+        return ' '.join(parts[:2])
+    else:
+        return raw_species
+
+def extract_aliases(species):
+    parts = species.split()
+    assert len(parts) == 2
+
+    return f"{parts[0][0].upper()}{parts[1][:3].upper()}"

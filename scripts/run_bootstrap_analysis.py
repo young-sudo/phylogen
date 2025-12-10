@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from Bio import AlignIO, Phylo
 from Bio.Phylo.TreeConstruction import DistanceCalculator, DistanceTreeConstructor
@@ -76,6 +76,7 @@ def main():
 
         Phylo.write([nj_tree], "tmp_nj_tree.txt", format="newick")
 
+        # Construct bootstrap consensus tree
         # installed with DendroPy
         subprocess.run(["sumtrees",
                         "-t", "tmp_nj_tree.txt",

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from dendropy import TaxonNamespace, TreeList
 from PhyloPipeline import *
