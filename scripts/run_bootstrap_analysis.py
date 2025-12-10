@@ -76,7 +76,8 @@ def main():
 
         Phylo.write([nj_tree], "tmp_nj_tree.txt", format="newick")
 
-        subprocess.run(["sumtrees.py",
+        # installed with DendroPy
+        subprocess.run(["sumtrees",
                         "-t", "tmp_nj_tree.txt",
                         "--unrooted",
                         "-i", "newick",
