@@ -11,4 +11,4 @@ RUN git clone https://bitbucket.org/pgor17/fasturec.git /opt/fasturec \
 
 ENV PATH="/opt/fasturec/bin:${PATH}"
 
-SHELL ["micromamba", "run", "-n", "pipeline", "/bin/bash", "-c"]
+SHELL ["micromamba", "run", "-n", "phylogen", "/bin/bash", "-c"]
