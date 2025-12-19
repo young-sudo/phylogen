@@ -4,8 +4,11 @@ COPY env.yml /tmp/env.yml
 RUN micromamba create -n phylogen -f /tmp/env.yml -y && \
     micromamba clean --all -y
 
-RUN micromamba install -n phylogen -y git make gcc_linux-64 gxx_linux-64 \
-    && micromamba clean --all -y
+# RUN micromamba install -n phylogen -y git make gcc_linux-64 gxx_linux-64 \
+#     && micromamba clean --all -y
+USER root
+RUN apt-get update && apt-get install -y libxml2-dev zlib1g-dev build-essential
+USER micromamba
 
 SHELL ["micromamba", "run", "-n", "phylogen", "/bin/bash", "-c"]
 
