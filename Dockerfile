@@ -13,6 +13,6 @@ SHELL ["micromamba", "run", "-n", "phylogen", "/bin/bash", "-c"]
 # install fasturec
 RUN git clone https://bitbucket.org/pgor17/fasturec.git /home/micromamba/fasturec \
     && cd /home/micromamba/fasturec \
-    && make
+    && PATH=/opt/conda/envs/phylogen/bin:$PATH make
 
 ENV PATH="/home/micromamba/fasturec/bin:${PATH}"
